@@ -30,7 +30,7 @@ func (li LineItem) String() string {
 // 5% discount for customers with at least 1000 fidelity points
 func FidelityPromo(o Order) int {
 	if o.customer.fidelity >= 1000 {
-		return o.total() / 20  // %5
+		return o.total() / 20 // %5
 	}
 	return 0
 }

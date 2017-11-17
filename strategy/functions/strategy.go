@@ -4,7 +4,7 @@ package main
 type Order struct {
 	customer  Customer
 	cart      []LineItem
-	promotion func (Order) int
+	promotion func(Order) int
 }
 
 func (o Order) total() int {

@@ -27,17 +27,17 @@ func (li LineItem) String() string {
 		float64(li.total())/100)
 }
 
-type FidelityPromo struct {}
+type FidelityPromo struct{}
 
 // 5% discount for customers with at least 1000 fidelity points
 func (p FidelityPromo) Discount(o Order) int {
 	if o.customer.fidelity >= 1000 {
-		return o.total() / 20  // %5
+		return o.total() / 20 // %5
 	}
 	return 0
 }
 
-type BulkItemPromo struct {}
+type BulkItemPromo struct{}
 
 // 10% discount for each line item with at least 20 units
 func (p BulkItemPromo) Discount(o Order) int {
@@ -50,7 +50,7 @@ func (p BulkItemPromo) Discount(o Order) int {
 	return discount
 }
 
-type LargeOrderPromo struct {}
+type LargeOrderPromo struct{}
 
 // 7% discount for orders with 10 or more items
 func (p LargeOrderPromo) Discount(o Order) int {
