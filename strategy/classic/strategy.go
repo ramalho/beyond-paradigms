@@ -1,28 +1,24 @@
 package main
 
-import (
-	"fmt"
-)
-
-// Customer has name and fidelity points
-type Customer struct {
-	name     string
-	fidelity int
+// Order is the context where a Discounter strategy is used
+type Order struct {
+	customer  Customer
+	cart      []LineItem
+	promotion Discounter
 }
 
-// LineItem represents one item in an Order
-type LineItem struct {
-	product  string
-	quantity int
-	price    int // cents
+type Discounter interface {
+	Discount(Order) int
 }
 
-func (li LineItem) total() int {
-	return li.quantity * li.price
+func (o Order) total() int {
+	total := 0
+	for _, item := range o.cart {
+		total += item.total()
+	}
+	return total
 }
 
-func (li LineItem) String() string {
-	return fmt.Sprintf("%d %s @ $%0.2f = $%0.2f",
-		li.quantity, li.product, float64(li.price)/100,
-		float64(li.total())/100)
+func (o Order) due() int {
+	return o.total() - o.promotion.Discount(o)
 }
