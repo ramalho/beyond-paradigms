@@ -51,7 +51,7 @@ func TestFidelityOrder(t *testing.T) {
 }
 
 func TestBulkItemOrder(t *testing.T) {
-	cart := []LineItem{LineItem{"banana", 30, 50}, apples}
+	cart := []LineItem{{"banana", 30, 50}, apples}
 	order := Order{joe, cart, BulkItemPromo}
 	want := 2850
 	got := order.Due()
