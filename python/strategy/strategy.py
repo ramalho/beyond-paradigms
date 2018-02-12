@@ -67,7 +67,6 @@ class Order:  # the Context
         fmt = '<Order total: {:.2f} due: {:.2f}>'
         return fmt.format(self.total(), self.due())
 
-# <2>
 
 def fidelity_promo(order):  # <3>
     """5% discount for customers with 1000 or more fidelity points"""

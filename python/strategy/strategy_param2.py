@@ -67,25 +67,30 @@ class Order:  # the Context
         fmt = '<Order total: {:.2f} due: {:.2f}>'
         return fmt.format(self.total(), self.due())
 
-# <2>
 
-class FidelityPromo():
+class Promotion():
+    """compute discount for order"""
+
+    def __init__(self, percent):
+        self.percent = percent
+
+    def __call__(self, order):
+        raise NotImplementedError("Subclass responsibility")
+
+
+class FidelityPromo(Promotion):
     """discount for customers with 1000 or more fidelity points"""
 
-    def __init__(self, percent):
-        self.percent = percent
+    def __call__(self, order):
+        if order.customer.fidelity >= 1000:
+            return order.total() * self.percent/100.0
+        return 0
 
-    def __call__(self, order):    
-        return order.total() * self.percent/100.0 if order.customer.fidelity >= 1000 else 0
 
-
-class BulkItemPromo():
+class BulkItemPromo(Promotion):
     """discount for each LineItem with 20 or more units"""
 
-    def __init__(self, percent):
-        self.percent = percent
-
-    def __call__(self, order):    
+    def __call__(self, order):
         discount = 0
         for item in order.cart:
             if item.quantity >= 20:
@@ -93,13 +98,10 @@ class BulkItemPromo():
         return discount
 
 
-class LargeOrderPromo():
+class LargeOrderPromo(Promotion):
     """discount for orders with 10 or more distinct items"""
 
-    def __init__(self, percent):
-        self.percent = percent
-
-    def __call__(self, order):    
+    def __call__(self, order):
         distinct_items = {item.product for item in order.cart}
         if len(distinct_items) >= 10:
             return order.total() * self.percent / 100.0
