@@ -1,32 +1,42 @@
 # classic_strategy.py
-# Strategy pattern -- classic implementation
+# Strategy pattern — classic implementation
 
 """
-# BEGIN CLASSIC_STRATEGY_TESTS
+Create two customers, with and without "fidelity points":
 
-    >>> joe = Customer('John Doe', 0)  # <1>
-    >>> ann = Customer('Ann Smith', 1100)
-    >>> cart = [LineItem('banana', 4, .5),  # <2>
+    >>> ann = Customer('Ann Smith', 1100)  # ➊
+    >>> joe = Customer('John Doe', 0)
+
+Create a shopping cart with some fruits:
+
+    >>> cart = [LineItem('banana', 4, .5),  # ➋
     ...         LineItem('apple', 10, 1.5),
     ...         LineItem('watermellon', 5, 5.0)]
-    >>> Order(joe, cart, FidelityPromo())  # <3>
+
+The `FidelityPromo` only gives a discount to Ann:
+
+    >>> Order(joe, cart, FidelityPromo())  # ➌
     <Order total: 42.00 due: 42.00>
-    >>> Order(ann, cart, FidelityPromo())  # <4>
+    >>> Order(ann, cart, FidelityPromo())  # ➍
     <Order total: 42.00 due: 39.90>
-    >>> banana_cart = [LineItem('banana', 30, .5),  # <5>
+
+The `BulkItemPromo` gives a discount for items with 20+ units:
+
+    >>> banana_cart = [LineItem('banana', 30, .5),  # ➎
     ...                LineItem('apple', 10, 1.5)]
-    >>> Order(joe, banana_cart, BulkItemPromo())  # <6>
+    >>> Order(joe, banana_cart, BulkItemPromo())  # ➏
     <Order total: 30.00 due: 28.50>
-    >>> long_order = [LineItem(str(item_code), 1, 1.0) # <7>
+
+`LargeOrderPromo` gives a discount for orders with 10+ items:
+
+    >>> long_order = [LineItem(str(item_code), 1, 1.0) # ➐
     ...               for item_code in range(10)]
-    >>> Order(joe, long_order, LargeOrderPromo())  # <8>
+    >>> Order(joe, long_order, LargeOrderPromo())  # ➑
     <Order total: 10.00 due: 9.30>
     >>> Order(joe, cart, LargeOrderPromo())
     <Order total: 42.00 due: 42.00>
 
-# END CLASSIC_STRATEGY_TESTS
 """
-# BEGIN CLASSIC_STRATEGY
 
 from abc import ABC, abstractmethod
 from collections import namedtuple
@@ -102,5 +112,3 @@ class LargeOrderPromo(Promotion):  # third Concrete Strategy
         if len(distinct_items) >= 10:
             return order.total() * .07
         return 0
-
-# END CLASSIC_STRATEGY

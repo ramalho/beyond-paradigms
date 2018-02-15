@@ -14,17 +14,17 @@ This talk does not require much Python knowledge. Knowing more than one programm
 
 ## Outline
 
-This outline is for 25' of presentation + 5' of Q&A. If given a 45' slot I will add 5 minutes to each of the 3 topics marked with *. This will raise the presentation time to 40' + 5' of Q&A. Those topics have tables or code that I can present at a high-level with a small sampling of details or dive deeper explaining more details. 
+This outline is for 25' of presentation + 5' of Q&A. If given a 45' slot I will add 5 minutes to each of the 3 topics marked with *. This will raise the presentation time to 40' + 5' of Q&A. Those topics have tables or code that I can present at a high-level with a small sampling of details or dive deeper explaining more details.
 
 01:00 Intro
 
-01:00 From assembly to Elixir via Python 
+01:00 From assembly to Elixir via Python
 
-01:00 Programming Language Pragmatics (Scott. 2015) 
+01:00 Programming Language Pragmatics (Scott. 2015)
 
 01:00 GCD in four languages
 
-02:00 Variations of GCD in Python 
+02:00 Variations of GCD in Python
 
 00:30 Scott's classifcation
 
@@ -40,11 +40,11 @@ This outline is for 25' of presentation + 5' of Q&A. If given a 45' slot I will 
 
 00:30 Kamin's book
 
-03:00 6 features in 5 languages: a table*
-
 01:00 Design Patterns are not universal
 
 03:00 Norvig's critique of design pattterns*
+
+03:00 6 features in 5 languages: a table*
 
 03:00 Implementing the Strategy Pattern*
 
@@ -52,11 +52,11 @@ This outline is for 25' of presentation + 5' of Q&A. If given a 45' slot I will 
 
 00:30 Which is more idiomatic?
 
-00:30 Neither syntax nor paradigms: features are the key 
+00:30 Neither syntax nor paradigms: features are the key
 
 00:30 Wrapping up: the value of solid foundations
 
-25:00 TOTAL 
+25:00 TOTAL
 
 ## Additional notes
 

@@ -1,21 +1,19 @@
-# strategy.py
-# Strategy pattern -- function-based implementation
+# strategy_param2.py
+# Strategy pattern — parametrized with callable
 
 """
-# BEGIN STRATEGY_TESTS
-
-    >>> joe = Customer('John Doe', 0)  # <1>
+    >>> joe = Customer('John Doe', 0)
     >>> ann = Customer('Ann Smith', 1100)
     >>> cart = [LineItem('banana', 4, .5),
     ...         LineItem('apple', 10, 1.5),
     ...         LineItem('watermellon', 5, 5.0)]
-    >>> Order(joe, cart, FidelityPromo(10))  # <2>
+    >>> Order(joe, cart, FidelityPromo(10))
     <Order total: 42.00 due: 42.00>
     >>> Order(ann, cart, FidelityPromo(10))
     <Order total: 42.00 due: 37.80>
     >>> banana_cart = [LineItem('banana', 30, .5),
     ...                LineItem('apple', 10, 1.5)]
-    >>> Order(joe, banana_cart, BulkItemPromo(10))  # <3>
+    >>> Order(joe, banana_cart, BulkItemPromo(10))
     <Order total: 30.00 due: 28.50>
     >>> long_order = [LineItem(str(item_code), 1, 1.0)
     ...               for item_code in range(10)]
@@ -24,9 +22,7 @@
     >>> Order(joe, cart, LargeOrderPromo(7))
     <Order total: 42.00 due: 42.00>
 
-# END STRATEGY_TESTS
 """
-# BEGIN STRATEGY
 
 from collections import namedtuple
 
@@ -106,5 +102,3 @@ class LargeOrderPromo(Promotion):
         if len(distinct_items) >= 10:
             return order.total() * self.percent / 100.0
         return 0
-
-# END STRATEGY
