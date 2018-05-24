@@ -1,2 +1,3 @@
-# go-paradigma
-Palestra: Cadê o paradigma? Teoria para entender Go na prática.
+# Beyond paradigms
+
+Slides and examples for talks presented at multiple conferences. Examples in Python and Go.
