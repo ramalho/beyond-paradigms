@@ -10,7 +10,8 @@ for i in range(1, 50):
         if t in pairs:
             continue
         res = gcd(*t)
-        #print(t, res)
+        if res not in t and res > (max(t)/4):
+            print(t, res)
         assert res == gcd1(*t)
         assert res == gcd2(*t)
         pairs.add(t)
